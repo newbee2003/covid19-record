@@ -1,18 +1,30 @@
+import static_adapter from '@sveltejs/adapter-static';
 import sveltePreprocess from 'svelte-preprocess';
-import vercel from '@sveltejs/adapter-vercel';
+import { defineConfig } from 'vite';
+import vitePluginString from 'vite-plugin-string';
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
-	preprocess: sveltePreprocess(),
+	preprocess: sveltePreprocess({
+		scss: {
+			includePaths: ['theme']
+		}
+	}),
 	kit: {
-		adapter: vercel(), 
-		// hydrate the <div id="svelte"> element in src/app.html
+		adapter: static_adapter(),
+		vite: defineConfig({
+			plugins: [
+				vitePluginString.default({
+					include: ['**/*.vs', '**/*.fs', '**/*.vert', '**/*.frag', '**/*.glsl', '**/*.md']
+				})
+			]
+		}),
 		// paths: {
 		// 	base: '/w4bw-demo',
 		// 	assets: '/w4bw-demo'
 		// },
+		// hydrate the <div id="svelte"> element in src/app.html
 		target: '#svelte'
-
 	}
 };
 
