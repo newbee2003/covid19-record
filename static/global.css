@@ -1,0 +1,23 @@
+body,
+#svelte {
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+}
+
+.s-app {
+	padding-left: 56px;
+}
+
+.navbar {
+	position: fixed !important;
+}
+
+.navbar a {
+	text-decoration: none;
+}
+
+.s-app-bar {
+	z-index: 0 !important;
+}

@@ -11,7 +11,7 @@ const config = {
 		}
 	}),
 	kit: {
-		adapter: static_adapter(),
+		adapter: static_adapter({ pages: 'build' }),
 		vite: defineConfig({
 			plugins: [
 				vitePluginString.default({
